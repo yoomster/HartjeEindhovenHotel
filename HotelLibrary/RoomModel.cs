@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace HotelLibrary;
 
-public record RoomModel(
-    int Id,
-    string RoomNumber, 
-    RoomTypeModel RoomTypeId
-    );
+public record RoomModel {
+    public int Id { get; set; }
+    public string RoomNr { get; set; }
+    public RoomTypeModel RoomType { get; set; }
+
+    //int Id,
+    //string RoomNumber,
+    //RoomTypeModel RoomTypeId
+    }

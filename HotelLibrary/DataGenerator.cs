@@ -30,6 +30,7 @@ public class DataGenerator
 
     public DataGenerator()
     {
+        //this code makes sure to always get the same fake data, usefull for testing!!!
         Randomizer.Seed = new Random(123);
 
         GuestFaker = new Faker<GuestModel>()
