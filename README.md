@@ -8,4 +8,4 @@ I'm still to implement the desktop app that out employees will use to check in g
 
 I am using Bogus for creating fake data to fill the database
 
-<iframe src="https://giphy.com/embed/LRlmTy4AaBMLr5C6ry" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/LRlmTy4AaBMLr5C6ry">via GIPHY</a></p>
+<iframe src="https://giphy.com/embed/LRlmTy4AaBMLr5C6ry" ></iframe>
