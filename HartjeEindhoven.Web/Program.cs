@@ -1,9 +1,14 @@
-using HotelLibrary;
+﻿using HotelLibrary;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using HartjeEindhoven.Web.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddDbContext<HartjeEindhovenWebContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("HartjeEindhovenWebContext") ?? throw new InvalidOperationException("Connection string 'HartjeEindhovenWebContext' not found.")));
 builder.Services.AddTransient<DataGenerator>();
 
 var app = builder.Build();
