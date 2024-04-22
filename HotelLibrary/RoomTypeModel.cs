@@ -10,5 +10,5 @@ public record RoomTypeModel(
     int Id,
     string Title,
     string Description,
-    int Price
+    float Price
 );

@@ -8,10 +8,10 @@ namespace HotelLibrary;
 
 public record BookingModel(
      int Id, 
-     RoomModel Room,
-     GuestModel guest,
+     RoomModel RoomId,
+     GuestModel GuestId,
      DateOnly StartDate,
      DateOnly EndDate,
      bool CheckedIn,
-     int TotalCost
+     float TotalCost
 );

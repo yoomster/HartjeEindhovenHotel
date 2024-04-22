@@ -9,5 +9,5 @@ namespace HotelLibrary;
 public record RoomModel(
     int Id,
     string RoomNumber, 
-    RoomTypeModel RoomType
+    RoomTypeModel RoomTypeId
     );
