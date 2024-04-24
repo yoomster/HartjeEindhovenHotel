@@ -10,39 +10,23 @@ namespace HotelLibrary;
 
 public class DataGenerator
 {
-    //Faker<RoomTypeModel> roomTypeFake;
-    //public DataGenerator()
-    //{
-    //    Randomizer.Seed = new Random(123);
+    Faker<GuestModel>?_fakeGuest;
 
-    //    roomTypeFake = new Faker<RoomTypeModel>()
-    //        .RuleFor(u => u.Title, f => f.Name.Random.String()) USE ENUMS
-    //        .RuleFor(u => u.Price, f => f.Random.Float(30, 250))
-    //        .RuleFor(u => u.Description, f => f.Lorem);
-    //}
 
-    //public RoomTypeModel GenerateRoomType()
-    //{
-    //    return roomTypeFake.Generate();
-    //}
-
-    Faker<GuestModel> GuestFaker;
-
-    public DataGenerator()
+    public Faker<GuestModel> GetCustomerGenerator()
     {
-        //this code makes sure to always get the same fake data, usefull for testing!!!
-        Randomizer.Seed = new Random(123);
+        //UseSeed to always get the same fake data, useful for testing!!!
+        //var id = 0;
 
-        GuestFaker = new Faker<GuestModel>()
+        _fakeGuest = new Faker<GuestModel>()
+            .UseSeed(123)
+            //.RuleFor(u => u.Id, f => ++id)
             .RuleFor(u => u.FirstName, f => f.Name.FirstName())
             .RuleFor(u => u.LastName, f => f.Name.LastName())
             .RuleFor(u => u.StreetAddress, f => f.Address.StreetAddress())
             .RuleFor(u => u.City, f => f.Address.City())
             .RuleFor(u => u.Zipcode, f => f.Address.ZipCode());
-    }
-
-    public GuestModel GenerateGuest()
-    {
-        return GuestFaker.Generate();
+ 
+        return _fakeGuest;
     }
 }

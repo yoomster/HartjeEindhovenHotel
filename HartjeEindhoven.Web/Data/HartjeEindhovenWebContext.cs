@@ -5,29 +5,44 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using HotelLibrary;
 using Microsoft.EntityFrameworkCore.Design;
+using Bogus;
+
 
 namespace HartjeEindhoven.Web.Data
 {
     public class HartjeEindhovenWebContext : DbContext
     {
-        public HartjeEindhovenWebContext (DbContextOptions<HartjeEindhovenWebContext> options)
+        private readonly DataGenerator _dataGenerator;
+
+        public HartjeEindhovenWebContext (DbContextOptions<HartjeEindhovenWebContext> options,
+            DataGenerator dataGenerator)
             : base(options)
         {
+            this._dataGenerator = dataGenerator;
         }
 
-        public DbSet<HotelLibrary.RoomModel> RoomModel { get; set; } = default!;
-        public DbSet<HotelLibrary.RoomTypeModel> RoomTypeModel { get; set; } = default!;
-        public DbSet<HotelLibrary.GuestModel> GuestModel { get; set; } = default!;
-    }
+        public DbSet<HotelLibrary.RoomModel> Rooms { get; set; } = default!;
+        public DbSet<HotelLibrary.RoomTypeModel> RoomTypes { get; set; } = default!;
+        public DbSet<HotelLibrary.GuestModel> Guests { get; set; } = default!;
 
-    public class BloggingContextFactory : IDesignTimeDbContextFactory<HartjeEindhovenWebContext>
-    {
-        public HartjeEindhovenWebContext CreateDbContext(string[] args)
+        protected override void OnModelCreating(ModelBuilder builder)
         {
-            var optionsBuilder = new DbContextOptionsBuilder<HartjeEindhovenWebContext>();
-            optionsBuilder.UseSqlServer("Server=YOOMSTER\\SQLEXPRESS;Database=hotel_db;Trusted_Connection=True;Encrypt=False");
+            base.OnModelCreating(builder);
 
-            return new HartjeEindhovenWebContext(optionsBuilder.Options);
+            builder.Entity<GuestModel>()
+                .HasData(_dataGenerator.GetCustomerGenerator().Generate(50)); ;
         }
     }
+
+    //public class BloggingContextFactory : IDesignTimeDbContextFactory<HartjeEindhovenWebContext>
+    //{
+    //    public HartjeEindhovenWebContext CreateDbContext(string[] args)
+    //    {
+    //        var optionsBuilder = new DbContextOptionsBuilder<HartjeEindhovenWebContext>();
+    //        optionsBuilder.UseSqlServer("Server=YOOMSTER\\SQLEXPRESS;Database=hotel_db;Trusted_Connection=True;Encrypt=False");
+
+    //        return new HartjeEindhovenWebContext(optionsBuilder.Options);
+    //    }
+    //}
+
 }
