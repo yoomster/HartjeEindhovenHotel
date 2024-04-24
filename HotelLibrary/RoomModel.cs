@@ -8,7 +8,7 @@ namespace HotelLibrary;
 
 public record RoomModel {
     public int Id { get; set; }
-    public string RoomNr { get; set; }
+    public int RoomNr { get; set; }
     public RoomTypeModel RoomType { get; set; }
 
     //int Id,
