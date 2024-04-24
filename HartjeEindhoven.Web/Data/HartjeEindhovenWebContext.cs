@@ -30,7 +30,10 @@ namespace HartjeEindhoven.Web.Data
             base.OnModelCreating(builder);
 
             builder.Entity<GuestModel>()
-                .HasData(_dataGenerator.GetCustomerGenerator().Generate(50)); ;
+                .HasData(_dataGenerator.GetCustomerGenerator().Generate(50));
+
+            builder.Entity<RoomTypeModel>()
+                .HasData(_dataGenerator.GetRoomTypeGenerator().Generate(15));
         }
     }
 

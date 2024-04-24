@@ -35,7 +35,7 @@ using (var scope = app.Services.CreateScope())
     // Resolve your DbContext within the scope
     var ctx = scope.ServiceProvider.GetRequiredService<HartjeEindhovenWebContext>();
 
-    //ctx.Database.EnsureDeleted();
+    ctx.Database.EnsureDeleted();
     ctx.Database.EnsureCreated();
 }
 
