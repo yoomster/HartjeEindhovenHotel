@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<HartjeEindhovenWebContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("HartjeEindhovenWebContext") ?? throw new InvalidOperationException("Connection string 'HartjeEindhovenWebContext' not found.")));
+    options.UseSqlServer("Server=YOOMSTER\\SQLEXPRESS;Database=HarteEindhovenDb;Trusted_Connection=True;Encrypt=False"));
 builder.Services.AddTransient<DataGenerator>();
 
 var app = builder.Build();
@@ -24,10 +24,23 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+
+
 app.UseRouting();
 
 app.UseAuthorization();
 
 app.MapRazorPages();
+
+using (var scope = app.Services.CreateScope())
+{
+    // Resolve your DbContext within the scope
+    var ctx = scope.ServiceProvider.GetRequiredService<HartjeEindhovenWebContext>();
+
+    ctx.Database.EnsureDeleted();
+    ctx.Database.EnsureCreated();
+}
+
+
 
 app.Run();

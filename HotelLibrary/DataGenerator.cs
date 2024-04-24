@@ -16,7 +16,7 @@ public class DataGenerator
     //    Randomizer.Seed = new Random(123);
 
     //    roomTypeFake = new Faker<RoomTypeModel>()
-    //        .RuleFor(u => u.Title, f => f.Name.Random.String())
+    //        .RuleFor(u => u.Title, f => f.Name.Random.String()) USE ENUMS
     //        .RuleFor(u => u.Price, f => f.Random.Float(30, 250))
     //        .RuleFor(u => u.Description, f => f.Lorem);
     //}
