@@ -23,7 +23,7 @@ namespace HartjeEindhoven.Web.Pages.Guests
 
         public async Task OnGetAsync()
         {
-            GuestModel = await _context.GuestModel.ToListAsync();
+            GuestModel = await _context.Guests.ToListAsync();
         }
     }
 }

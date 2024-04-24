@@ -29,7 +29,7 @@ namespace HartjeEindhoven.Web.Pages.Rooms
                 return NotFound();
             }
 
-            var roommodel = await _context.RoomModel.FirstOrDefaultAsync(m => m.Id == id);
+            var roommodel = await _context.Rooms.FirstOrDefaultAsync(m => m.Id == id);
 
             if (roommodel == null)
             {
@@ -49,11 +49,11 @@ namespace HartjeEindhoven.Web.Pages.Rooms
                 return NotFound();
             }
 
-            var roommodel = await _context.RoomModel.FindAsync(id);
+            var roommodel = await _context.Rooms.FindAsync(id);
             if (roommodel != null)
             {
                 RoomModel = roommodel;
-                _context.RoomModel.Remove(RoomModel);
+                _context.Rooms.Remove(RoomModel);
                 await _context.SaveChangesAsync();
             }
 

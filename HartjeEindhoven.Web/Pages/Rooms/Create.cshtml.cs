@@ -35,7 +35,7 @@ namespace HartjeEindhoven.Web.Pages.Rooms
                 return Page();
             }
 
-            _context.RoomModel.Add(RoomModel);
+            _context.Rooms.Add(RoomModel);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

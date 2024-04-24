@@ -35,7 +35,7 @@ namespace HartjeEindhoven.Web.Pages.Guests
                 return Page();
             }
 
-            _context.GuestModel.Add(GuestModel);
+            _context.Guests.Add(GuestModel);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

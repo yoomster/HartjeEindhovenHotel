@@ -28,7 +28,7 @@ namespace HartjeEindhoven.Web.Pages.Guests
                 return NotFound();
             }
 
-            var guestmodel = await _context.GuestModel.FirstOrDefaultAsync(m => m.Id == id);
+            var guestmodel = await _context.Guests.FirstOrDefaultAsync(m => m.Id == id);
             if (guestmodel == null)
             {
                 return NotFound();

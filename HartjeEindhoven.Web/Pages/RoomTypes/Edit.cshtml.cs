@@ -30,7 +30,7 @@ namespace HartjeEindhoven.Web.Pages.RoomTypes
                 return NotFound();
             }
 
-            var roomtypemodel = await _context.RoomTypeModel.FirstOrDefaultAsync(m => m.Id == id);
+            var roomtypemodel = await _context.RoomTypes.FirstOrDefaultAsync(m => m.Id == id);
             if (roomtypemodel == null)
             {
                 return NotFound();
@@ -71,7 +71,7 @@ namespace HartjeEindhoven.Web.Pages.RoomTypes
 
         private bool RoomTypeModelExists(int id)
         {
-            return _context.RoomTypeModel.Any(e => e.Id == id);
+            return _context.RoomTypes.Any(e => e.Id == id);
         }
     }
 }

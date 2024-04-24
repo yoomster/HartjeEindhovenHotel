@@ -23,7 +23,7 @@ namespace HartjeEindhoven.Web.Pages.Rooms
 
         public async Task OnGetAsync()
         {
-            RoomModel = await _context.RoomModel.ToListAsync();
+            RoomModel = await _context.Rooms.ToListAsync();
         }
     }
 }

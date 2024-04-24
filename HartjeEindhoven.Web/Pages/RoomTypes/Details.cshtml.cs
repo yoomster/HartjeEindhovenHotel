@@ -28,7 +28,7 @@ namespace HartjeEindhoven.Web.Pages.RoomTypes
                 return NotFound();
             }
 
-            var roomtypemodel = await _context.RoomTypeModel.FirstOrDefaultAsync(m => m.Id == id);
+            var roomtypemodel = await _context.RoomTypes.FirstOrDefaultAsync(m => m.Id == id);
             if (roomtypemodel == null)
             {
                 return NotFound();

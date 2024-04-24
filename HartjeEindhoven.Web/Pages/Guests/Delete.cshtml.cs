@@ -29,7 +29,7 @@ namespace HartjeEindhoven.Web.Pages.Guests
                 return NotFound();
             }
 
-            var guestmodel = await _context.GuestModel.FirstOrDefaultAsync(m => m.Id == id);
+            var guestmodel = await _context.Guests.FirstOrDefaultAsync(m => m.Id == id);
 
             if (guestmodel == null)
             {
@@ -49,11 +49,11 @@ namespace HartjeEindhoven.Web.Pages.Guests
                 return NotFound();
             }
 
-            var guestmodel = await _context.GuestModel.FindAsync(id);
+            var guestmodel = await _context.Guests.FindAsync(id);
             if (guestmodel != null)
             {
                 GuestModel = guestmodel;
-                _context.GuestModel.Remove(GuestModel);
+                _context.Guests.Remove(GuestModel);
                 await _context.SaveChangesAsync();
             }
 
