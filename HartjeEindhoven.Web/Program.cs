@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<HartjeEindhovenWebContext>(options =>
-    options.UseSqlServer("Server=YOOMSTER\\SQLEXPRESS;Database=HarteEindhovenDb;Trusted_Connection=True;Encrypt=False"));
+    options.UseSqlServer("Server=YOOMSTER\\SQLEXPRESS;Database=HartjeEindhovenDb;Trusted_Connection=True;Encrypt=False"));
 builder.Services.AddTransient<DataGenerator>();
 
 var app = builder.Build();

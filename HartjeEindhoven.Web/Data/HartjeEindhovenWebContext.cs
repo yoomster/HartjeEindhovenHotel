@@ -16,6 +16,8 @@ namespace HartjeEindhoven.Web.Data
         }
 
         public DbSet<HotelLibrary.RoomModel> RoomModel { get; set; } = default!;
+        public DbSet<HotelLibrary.RoomTypeModel> RoomTypeModel { get; set; } = default!;
+        public DbSet<HotelLibrary.GuestModel> GuestModel { get; set; } = default!;
     }
 
     public class BloggingContextFactory : IDesignTimeDbContextFactory<HartjeEindhovenWebContext>
