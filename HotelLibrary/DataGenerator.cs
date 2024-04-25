@@ -11,7 +11,7 @@ namespace HotelLibrary;
 public class DataGenerator
 {
     Faker<GuestModel>?_fakeGuest;
-    Faker<RoomTypeModel>?_fakeRoomType;
+    Faker<RoomType>?_fakeRoomType;
     Faker<RoomModel>? _fakeRoom;
 
     public Faker<GuestModel> GetCustomerGenerator()
@@ -34,7 +34,7 @@ public class DataGenerator
 
     public Faker<RoomModel> GetRoomGenerator()
     {
-        var fakeRoomType = GetRoomTypeGenerator();
+        //var fakeRoomType = GetRoomTypeGenerator();
 
         var id = 0;
         var roomNr = 101;
@@ -42,23 +42,23 @@ public class DataGenerator
         _fakeRoom = new Faker<RoomModel>()
             .UseSeed(333)
             .RuleFor(u => u.Id, f => ++id)
-            .RuleFor(u => u.RoomNr, f => ++roomNr)
-            .RuleFor(u => u.RoomType, f => fakeRoomType.Generate(1).First());
+            .RuleFor(u => u.RoomNr, f => ++roomNr);
 
         return _fakeRoom;
     }
 
-    public Faker<RoomTypeModel> GetRoomTypeGenerator()
-    {
-        var id = 0;
+    //hard code the room types, 
+    //public Faker<RoomType> GetRoomTypeGenerator()
+    //{
+    //    var id = 0;
 
-        _fakeRoomType = new Faker<RoomTypeModel>()
-            .UseSeed(222)
-            .RuleFor(u => u.Id, f => ++id)
-            .RuleFor(u => u.Title, f => f.PickRandom<RoomTitleEnum>())
-            .RuleFor(u => u.Description, f => f.Random.Words())
-            .RuleFor(u => u.Price, f => f.Random.Int(30, 150));
+    //    _fakeRoomType = new Faker<RoomType>()
+    //        //.UseSeed(222)
+    //        .RuleFor(u => u.Id, f => ++id)
+    //        .RuleFor(u => u.Title, f => f.PickRandom<RoomTitleEnum>())
+    //        .RuleFor(u => u.Description, f => f.Random.Words())
+    //        .RuleFor(u => u.Price, f => f.Random.Int(30, 150));
 
-        return _fakeRoomType;
-    }
+    //    return _fakeRoomType;
+    //}
 }

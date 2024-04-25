@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HotelLibrary;
 
-public record RoomTypeModel {
+public record RoomType {
     public int Id { get; set; }
     public RoomTitleEnum Title { get; set; }
     public string Description { get; set; }
