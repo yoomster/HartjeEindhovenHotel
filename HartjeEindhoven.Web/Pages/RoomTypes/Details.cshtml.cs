@@ -19,7 +19,7 @@ namespace HartjeEindhoven.Web.Pages.RoomTypes
             _context = context;
         }
 
-        public RoomTypeModel RoomTypeModel { get; set; } = default!;
+        public RoomType RoomTypeModel { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {

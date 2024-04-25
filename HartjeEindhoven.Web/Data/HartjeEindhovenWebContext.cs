@@ -22,7 +22,7 @@ namespace HartjeEindhoven.Web.Data
         }
 
         public DbSet<HotelLibrary.RoomModel> Rooms { get; set; } = default!;
-        public DbSet<HotelLibrary.RoomTypeModel> RoomTypes { get; set; } = default!;
+        public DbSet<HotelLibrary.RoomType> RoomTypes { get; set; } = default!;
         public DbSet<HotelLibrary.GuestModel> Guests { get; set; } = default!;
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -31,6 +31,7 @@ namespace HartjeEindhoven.Web.Data
 
             builder.Entity<GuestModel>()
                 .HasData(_dataGenerator.GetCustomerGenerator().Generate(50));
+
 
             builder.Entity<RoomModel>()
                 .HasData(_dataGenerator.GetRoomGenerator().Generate(15));
