@@ -1,4 +1,5 @@
 ﻿using Bogus;
+using HotelLibrary;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
@@ -10,9 +11,10 @@ namespace HotelLibrary;
 
 public class DataGenerator
 {
-    Faker<GuestModel>?_fakeGuest;
-    Faker<RoomType>?_fakeRoomType;
+    Faker<GuestModel>? _fakeGuest;
     Faker<RoomModel>? _fakeRoom;
+    RoomType? _roomType;
+
 
     public Faker<GuestModel> GetCustomerGenerator()
     {
@@ -34,9 +36,8 @@ public class DataGenerator
 
     public Faker<RoomModel> GetRoomGenerator()
     {
-        //var fakeRoomType = GetRoomTypeGenerator();
-
         var id = 0;
+        // 101 if roomtype = 1, 201 if roomt=2 and 301 if 3
         var roomNr = 101;
 
         _fakeRoom = new Faker<RoomModel>()
@@ -47,18 +48,32 @@ public class DataGenerator
         return _fakeRoom;
     }
 
-    //hard code the room types, 
-    //public Faker<RoomType> GetRoomTypeGenerator()
-    //{
-    //    var id = 0;
+    public RoomType GetRoomTypeGenerator()
+    {
+        var id = 0;
 
-    //    _fakeRoomType = new Faker<RoomType>()
-    //        //.UseSeed(222)
-    //        .RuleFor(u => u.Id, f => ++id)
-    //        .RuleFor(u => u.Title, f => f.PickRandom<RoomTitleEnum>())
-    //        .RuleFor(u => u.Description, f => f.Random.Words())
-    //        .RuleFor(u => u.Price, f => f.Random.Int(30, 150));
+        _roomType = new RoomType
+        {
+            Id = ++id,
+            Title = "Kingsize Bedroom",
+            Description = "A room with a king-size bed.",
+            Price = 60M
+        };
 
-    //    return _fakeRoomType;
-    //}
+        //new RoomType
+        //{
+        //    Title = "Two Queen Size Beds",
+        //    Description = "A room with two queen-size beds",
+        //    Price = 100M
+        //},
+
+        //new RoomType
+        //{
+        //    Title = "Executive Suite",
+        //    Description = "Two rooms, each with a king-size bed",
+        //    Price = 150M
+        //}
+        //);
+        return _roomType;
+       }
 }
