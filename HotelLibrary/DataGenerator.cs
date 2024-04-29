@@ -11,20 +11,20 @@ namespace HotelLibrary;
 
 public class DataGenerator
 {
-    Faker<GuestModel>? _fakeGuest;
-    Faker<RoomModel>? _fakeRoom;
+    Faker<Guest>? _fakeGuest;
+    Faker<Room>? _fakeRoom;
     RoomType? _roomType;
 
 
-    public Faker<GuestModel> GetCustomerGenerator()
+    public Faker<Guest> GetCustomerGenerator()
     {
         //UseSeed for getting same fake data, useful for testing!!!
 
         var id = 0;
 
-        _fakeGuest = new Faker<GuestModel>()
+        _fakeGuest = new Faker<Guest>()
             .UseSeed(111)
-            .RuleFor(u => u.Id, f => ++id)
+            .RuleFor(u => u.GuestId, f => ++id)
             .RuleFor(u => u.FirstName, f => f.Name.FirstName())
             .RuleFor(u => u.LastName, f => f.Name.LastName())
             .RuleFor(u => u.StreetAddress, f => f.Address.StreetAddress())
@@ -34,15 +34,15 @@ public class DataGenerator
         return _fakeGuest;
     }
 
-    public Faker<RoomModel> GetRoomGenerator()
+    public Faker<Room> GetRoomGenerator()
     {
         var id = 0;
         // 101 if roomtype = 1, 201 if roomt=2 and 301 if 3
         var roomNr = 101;
 
-        _fakeRoom = new Faker<RoomModel>()
+        _fakeRoom = new Faker<Room>()
             .UseSeed(333)
-            .RuleFor(u => u.Id, f => ++id)
+            .RuleFor(u => u.RoomId, f => ++id)
             .RuleFor(u => u.RoomNr, f => ++roomNr);
 
         return _fakeRoom;
@@ -54,7 +54,7 @@ public class DataGenerator
 
         _roomType = new RoomType
         {
-            Id = ++id,
+            RoomTypeId = ++id,
             Title = "Kingsize Bedroom",
             Description = "A room with a king-size bed.",
             Price = 60M

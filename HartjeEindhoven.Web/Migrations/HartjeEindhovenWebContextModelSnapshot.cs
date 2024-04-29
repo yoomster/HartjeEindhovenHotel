@@ -21,7 +21,7 @@ namespace HartjeEindhoven.Web.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("HotelLibrary.GuestModel", b =>
+            modelBuilder.Entity("HotelLibrary.Guest", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -51,10 +51,10 @@ namespace HartjeEindhoven.Web.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("GuestModel");
+                    b.ToTable("Guest");
                 });
 
-            modelBuilder.Entity("HotelLibrary.RoomModel", b =>
+            modelBuilder.Entity("HotelLibrary.Room", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -73,7 +73,7 @@ namespace HartjeEindhoven.Web.Migrations
 
                     b.HasIndex("RoomTypeId");
 
-                    b.ToTable("RoomModel");
+                    b.ToTable("Room");
                 });
 
             modelBuilder.Entity("HotelLibrary.RoomTypeModel", b =>
@@ -100,7 +100,7 @@ namespace HartjeEindhoven.Web.Migrations
                     b.ToTable("RoomTypeModel");
                 });
 
-            modelBuilder.Entity("HotelLibrary.RoomModel", b =>
+            modelBuilder.Entity("HotelLibrary.Room", b =>
                 {
                     b.HasOne("HotelLibrary.RoomTypeModel", "RoomType")
                         .WithMany()

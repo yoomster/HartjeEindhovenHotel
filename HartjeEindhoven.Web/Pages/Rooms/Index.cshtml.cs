@@ -19,11 +19,11 @@ namespace HartjeEindhoven.Web.Pages.Rooms
             _context = context;
         }
 
-        public IList<RoomModel> RoomModel { get;set; } = default!;
+        public IList<Room> Room { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            RoomModel = await _context.Rooms.ToListAsync();
+            Room = await _context.Rooms.ToListAsync();
         }
     }
 }

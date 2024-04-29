@@ -21,7 +21,7 @@ namespace HartjeEindhoven.Web.Pages.Rooms
         }
 
         [BindProperty]
-        public RoomModel RoomModel { get; set; } = default!;
+        public Room Room { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,12 +30,12 @@ namespace HartjeEindhoven.Web.Pages.Rooms
                 return NotFound();
             }
 
-            var roommodel =  await _context.Rooms.FirstOrDefaultAsync(m => m.Id == id);
-            if (roommodel == null)
+            var Room =  await _context.Rooms.FirstOrDefaultAsync(m => m.Id == id);
+            if (Room == null)
             {
                 return NotFound();
             }
-            RoomModel = roommodel;
+            Room = Room;
             return Page();
         }
 
@@ -48,7 +48,7 @@ namespace HartjeEindhoven.Web.Pages.Rooms
                 return Page();
             }
 
-            _context.Attach(RoomModel).State = EntityState.Modified;
+            _context.Attach(Room).State = EntityState.Modified;
 
             try
             {
@@ -56,7 +56,7 @@ namespace HartjeEindhoven.Web.Pages.Rooms
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RoomModelExists(RoomModel.Id))
+                if (!RoomExists(Room.Id))
                 {
                     return NotFound();
                 }
@@ -69,7 +69,7 @@ namespace HartjeEindhoven.Web.Pages.Rooms
             return RedirectToPage("./Index");
         }
 
-        private bool RoomModelExists(int id)
+        private bool RoomExists(int id)
         {
             return _context.Rooms.Any(e => e.Id == id);
         }

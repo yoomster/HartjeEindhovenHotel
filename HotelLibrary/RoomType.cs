@@ -7,14 +7,9 @@ using System.Threading.Tasks;
 
 namespace HotelLibrary;
 
-public record RoomType {
-    public int Id { get; set; }
+public record RoomType{
+    public int RoomTypeId { get; set; }
     public string Title { get; set; }
     public string Description { get; set; }
     public decimal Price { get; set; }
-
-    //int Id,
-    //string Title,
-    //string Description,
-    //float Price
 }

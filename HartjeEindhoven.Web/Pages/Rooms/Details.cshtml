@@ -8,18 +8,18 @@
 <h1>Details</h1>
 
 <div>
-    <h4>RoomModel</h4>
+    <h4>Room</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.RoomModel.RoomNr)
+            @Html.DisplayNameFor(model => model.Room.RoomNr)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.RoomModel.RoomNr)
+            @Html.DisplayFor(model => model.Room.RoomNr)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.RoomModel.Id">Edit</a> |
+    <a asp-page="./Edit" asp-route-id="@Model.Room.Id">Edit</a> |
     <a asp-page="./Index">Back to List</a>
 </div>

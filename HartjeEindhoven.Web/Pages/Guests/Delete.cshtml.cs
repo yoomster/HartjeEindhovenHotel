@@ -20,7 +20,7 @@ namespace HartjeEindhoven.Web.Pages.Guests
         }
 
         [BindProperty]
-        public GuestModel GuestModel { get; set; } = default!;
+        public Guest Guest { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,15 +29,15 @@ namespace HartjeEindhoven.Web.Pages.Guests
                 return NotFound();
             }
 
-            var guestmodel = await _context.Guests.FirstOrDefaultAsync(m => m.Id == id);
+            var Guest = await _context.Guests.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (guestmodel == null)
+            if (Guest == null)
             {
                 return NotFound();
             }
             else
             {
-                GuestModel = guestmodel;
+                Guest = Guest;
             }
             return Page();
         }
@@ -49,11 +49,11 @@ namespace HartjeEindhoven.Web.Pages.Guests
                 return NotFound();
             }
 
-            var guestmodel = await _context.Guests.FindAsync(id);
-            if (guestmodel != null)
+            var Guest = await _context.Guests.FindAsync(id);
+            if (Guest != null)
             {
-                GuestModel = guestmodel;
-                _context.Guests.Remove(GuestModel);
+                Guest = Guest;
+                _context.Guests.Remove(Guest);
                 await _context.SaveChangesAsync();
             }
 

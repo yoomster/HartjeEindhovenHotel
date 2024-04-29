@@ -25,7 +25,7 @@ namespace HartjeEindhoven.Web.Pages.Rooms
         }
 
         [BindProperty]
-        public RoomModel RoomModel { get; set; } = default!;
+        public Room Room { get; set; } = default!;
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -35,7 +35,7 @@ namespace HartjeEindhoven.Web.Pages.Rooms
                 return Page();
             }
 
-            _context.Rooms.Add(RoomModel);
+            _context.Rooms.Add(Room);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

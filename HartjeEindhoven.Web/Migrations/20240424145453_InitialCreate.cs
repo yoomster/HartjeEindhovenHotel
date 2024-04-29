@@ -11,7 +11,7 @@ namespace HartjeEindhoven.Web.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "GuestModel",
+                name: "Guest",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -24,7 +24,7 @@ namespace HartjeEindhoven.Web.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_GuestModel", x => x.Id);
+                    table.PrimaryKey("PK_Guest", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -43,7 +43,7 @@ namespace HartjeEindhoven.Web.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "RoomModel",
+                name: "Room",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -53,9 +53,9 @@ namespace HartjeEindhoven.Web.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RoomModel", x => x.Id);
+                    table.PrimaryKey("PK_Room", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RoomModel_RoomTypeModel_RoomTypeId",
+                        name: "FK_Room_RoomTypeModel_RoomTypeId",
                         column: x => x.RoomTypeId,
                         principalTable: "RoomTypeModel",
                         principalColumn: "Id",
@@ -63,8 +63,8 @@ namespace HartjeEindhoven.Web.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_RoomModel_RoomTypeId",
-                table: "RoomModel",
+                name: "IX_Room_RoomTypeId",
+                table: "Room",
                 column: "RoomTypeId");
         }
 
@@ -72,10 +72,10 @@ namespace HartjeEindhoven.Web.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "GuestModel");
+                name: "Guest");
 
             migrationBuilder.DropTable(
-                name: "RoomModel");
+                name: "Room");
 
             migrationBuilder.DropTable(
                 name: "RoomTypeModel");

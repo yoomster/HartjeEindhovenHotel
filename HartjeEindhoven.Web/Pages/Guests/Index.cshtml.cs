@@ -19,11 +19,11 @@ namespace HartjeEindhoven.Web.Pages.Guests
             _context = context;
         }
 
-        public IList<GuestModel> GuestModel { get;set; } = default!;
+        public IList<Guest> Guest { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            GuestModel = await _context.Guests.ToListAsync();
+            Guest = await _context.Guests.ToListAsync();
         }
     }
 }

@@ -25,7 +25,7 @@ namespace HartjeEindhoven.Web.Pages.Guests
         }
 
         [BindProperty]
-        public GuestModel GuestModel { get; set; } = default!;
+        public Guest Guest { get; set; } = default!;
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -35,7 +35,7 @@ namespace HartjeEindhoven.Web.Pages.Guests
                 return Page();
             }
 
-            _context.Guests.Add(GuestModel);
+            _context.Guests.Add(Guest);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

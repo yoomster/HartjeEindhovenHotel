@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System;Room
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,19 +21,21 @@ namespace HartjeEindhoven.Web.Data
             this._dataGenerator = dataGenerator;
         }
 
-        public DbSet<HotelLibrary.RoomModel> Rooms { get; set; } = default!;
+        
+
+        public DbSet<HotelLibrary.Room> Rooms { get; set; } = default!;
         public DbSet<HotelLibrary.RoomType> RoomTypes { get; set; } = default!;
-        public DbSet<HotelLibrary.GuestModel> Guests { get; set; } = default!;
+        public DbSet<HotelLibrary.Guest> Guests { get; set; } = default!;
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
 
-            builder.Entity<GuestModel>()
+            builder.Entity<Guest>()
                 .HasData(_dataGenerator.GetCustomerGenerator().Generate(50));
 
 
-            builder.Entity<RoomModel>()
+            builder.Entity<Room>()
                 .HasData(_dataGenerator.GetRoomGenerator().Generate(15));
 
             builder.Entity<RoomType>()

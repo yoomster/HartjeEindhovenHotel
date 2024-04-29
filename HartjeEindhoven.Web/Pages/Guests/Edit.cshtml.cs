@@ -21,7 +21,7 @@ namespace HartjeEindhoven.Web.Pages.Guests
         }
 
         [BindProperty]
-        public GuestModel GuestModel { get; set; } = default!;
+        public Guest Guest { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,12 +30,12 @@ namespace HartjeEindhoven.Web.Pages.Guests
                 return NotFound();
             }
 
-            var guestmodel =  await _context.Guests.FirstOrDefaultAsync(m => m.Id == id);
-            if (guestmodel == null)
+            var Guest =  await _context.Guests.FirstOrDefaultAsync(m => m.Id == id);
+            if (Guest == null)
             {
                 return NotFound();
             }
-            GuestModel = guestmodel;
+            Guest = Guest;
             return Page();
         }
 
@@ -48,7 +48,7 @@ namespace HartjeEindhoven.Web.Pages.Guests
                 return Page();
             }
 
-            _context.Attach(GuestModel).State = EntityState.Modified;
+            _context.Attach(Guest).State = EntityState.Modified;
 
             try
             {
@@ -56,7 +56,7 @@ namespace HartjeEindhoven.Web.Pages.Guests
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!GuestModelExists(GuestModel.Id))
+                if (!GuestExists(Guest.Id))
                 {
                     return NotFound();
                 }
@@ -69,7 +69,7 @@ namespace HartjeEindhoven.Web.Pages.Guests
             return RedirectToPage("./Index");
         }
 
-        private bool GuestModelExists(int id)
+        private bool GuestExists(int id)
         {
             return _context.Guests.Any(e => e.Id == id);
         }

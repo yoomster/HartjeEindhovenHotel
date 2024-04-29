@@ -20,7 +20,7 @@ namespace HartjeEindhoven.Web.Pages.Rooms
         }
 
         [BindProperty]
-        public RoomModel RoomModel { get; set; } = default!;
+        public Room Room { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,15 +29,15 @@ namespace HartjeEindhoven.Web.Pages.Rooms
                 return NotFound();
             }
 
-            var roommodel = await _context.Rooms.FirstOrDefaultAsync(m => m.Id == id);
+            var Room = await _context.Rooms.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (roommodel == null)
+            if (Room == null)
             {
                 return NotFound();
             }
             else
             {
-                RoomModel = roommodel;
+                Room = Room;
             }
             return Page();
         }
@@ -49,11 +49,11 @@ namespace HartjeEindhoven.Web.Pages.Rooms
                 return NotFound();
             }
 
-            var roommodel = await _context.Rooms.FindAsync(id);
-            if (roommodel != null)
+            var Room = await _context.Rooms.FindAsync(id);
+            if (Room != null)
             {
-                RoomModel = roommodel;
-                _context.Rooms.Remove(RoomModel);
+                Room = Room;
+                _context.Rooms.Remove(Room);
                 await _context.SaveChangesAsync();
             }
 
