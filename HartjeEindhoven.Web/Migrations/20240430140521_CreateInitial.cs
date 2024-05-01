@@ -5,13 +5,13 @@
 namespace HartjeEindhoven.Web.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class CreateInitial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Guest",
+                name: "Guests",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -24,47 +24,47 @@ namespace HartjeEindhoven.Web.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Guest", x => x.Id);
+                    table.PrimaryKey("PK_Guests", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "RoomTypeModel",
+                name: "RoomTypes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Price = table.Column<float>(type: "real", nullable: false)
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RoomTypeModel", x => x.Id);
+                    table.PrimaryKey("PK_RoomTypes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Room",
+                name: "Rooms",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RoomNr = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RoomNr = table.Column<int>(type: "int", nullable: false),
                     RoomTypeId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Room", x => x.Id);
+                    table.PrimaryKey("PK_Rooms", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Room_RoomTypeModel_RoomTypeId",
+                        name: "FK_Rooms_RoomTypes_RoomTypeId",
                         column: x => x.RoomTypeId,
-                        principalTable: "RoomTypeModel",
+                        principalTable: "RoomTypes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Room_RoomTypeId",
-                table: "Room",
+                name: "IX_Rooms_RoomTypeId",
+                table: "Rooms",
                 column: "RoomTypeId");
         }
 
@@ -72,13 +72,13 @@ namespace HartjeEindhoven.Web.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Guest");
+                name: "Guests");
 
             migrationBuilder.DropTable(
-                name: "Room");
+                name: "Rooms");
 
             migrationBuilder.DropTable(
-                name: "RoomTypeModel");
+                name: "RoomTypes");
         }
     }
 }

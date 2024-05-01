@@ -23,8 +23,7 @@ public class DataGenerator
         var id = 0;
 
         _fakeGuest = new Faker<Guest>()
-            .UseSeed(111)
-            .RuleFor(u => u.GuestId, f => ++id)
+            .RuleFor(u => u.Id, f => ++id)
             .RuleFor(u => u.FirstName, f => f.Name.FirstName())
             .RuleFor(u => u.LastName, f => f.Name.LastName())
             .RuleFor(u => u.StreetAddress, f => f.Address.StreetAddress())
@@ -41,9 +40,10 @@ public class DataGenerator
         var roomNr = 101;
 
         _fakeRoom = new Faker<Room>()
-            .UseSeed(333)
-            .RuleFor(u => u.RoomId, f => ++id)
-            .RuleFor(u => u.RoomNr, f => ++roomNr);
+            .RuleFor(u => u.Id, f => ++id)
+            .RuleFor(u => u.RoomNr, f => ++roomNr)
+            .RuleFor(u => u.RoomTypeId, f => 1); 
+        
 
         return _fakeRoom;
     }
@@ -54,7 +54,7 @@ public class DataGenerator
 
         _roomType = new RoomType
         {
-            RoomTypeId = ++id,
+            Id = 1,
             Title = "Kingsize Bedroom",
             Description = "A room with a king-size bed.",
             Price = 60M

@@ -51,7 +51,7 @@ namespace HartjeEindhoven.Web.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Guest");
+                    b.ToTable("Guests");
                 });
 
             modelBuilder.Entity("HotelLibrary.Room", b =>
@@ -62,9 +62,8 @@ namespace HartjeEindhoven.Web.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("RoomNr")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("RoomNr")
+                        .HasColumnType("int");
 
                     b.Property<int>("RoomTypeId")
                         .HasColumnType("int");
@@ -73,10 +72,10 @@ namespace HartjeEindhoven.Web.Migrations
 
                     b.HasIndex("RoomTypeId");
 
-                    b.ToTable("Room");
+                    b.ToTable("Rooms");
                 });
 
-            modelBuilder.Entity("HotelLibrary.RoomTypeModel", b =>
+            modelBuilder.Entity("HotelLibrary.RoomType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -88,8 +87,8 @@ namespace HartjeEindhoven.Web.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("Price")
-                        .HasColumnType("real");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -97,18 +96,23 @@ namespace HartjeEindhoven.Web.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("RoomTypeModel");
+                    b.ToTable("RoomTypes");
                 });
 
             modelBuilder.Entity("HotelLibrary.Room", b =>
                 {
-                    b.HasOne("HotelLibrary.RoomTypeModel", "RoomType")
-                        .WithMany()
+                    b.HasOne("HotelLibrary.RoomType", "RoomType")
+                        .WithMany("Rooms")
                         .HasForeignKey("RoomTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("RoomType");
+                });
+
+            modelBuilder.Entity("HotelLibrary.RoomType", b =>
+                {
+                    b.Navigation("Rooms");
                 });
 #pragma warning restore 612, 618
         }

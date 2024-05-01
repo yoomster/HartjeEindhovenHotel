@@ -8,7 +8,7 @@ namespace HotelLibrary;
 
 public record Booking
 {
-    public int BookingId { get; set; }
+    public int Id { get; set; }
     public Room RoomId { get; set; }
     public Guest GuestId { get; set; }
     public DateOnly StartDate { get; set; }

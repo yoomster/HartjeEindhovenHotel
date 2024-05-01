@@ -1,5 +1,4 @@
-﻿using System;Room
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -34,12 +33,14 @@ namespace HartjeEindhoven.Web.Data
             builder.Entity<Guest>()
                 .HasData(_dataGenerator.GetCustomerGenerator().Generate(50));
 
+            var singleRoomType = _dataGenerator.GetRoomTypeGenerator();
 
             builder.Entity<Room>()
-                .HasData(_dataGenerator.GetRoomGenerator().Generate(15));
+                .HasData(_dataGenerator.GetRoomGenerator().Generate(50));
+
 
             builder.Entity<RoomType>()
-                .HasData(_dataGenerator.GetRoomTypeGenerator());
+                .HasData(singleRoomType);
         }
     }
 
